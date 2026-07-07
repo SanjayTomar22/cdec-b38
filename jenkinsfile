@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage ('pull-stage') {
+            steps {
+                git branch: 'main', url: 'https://github.com/shubhamkalsait/EasyCRUD.git'
+            }
+        }
+        stage ('build-stage') {
+            steps {
+                echo 'Build Job success'
+            }
+        }
+        stage ('test-stage') {
+            steps {
+                echo 'Test Job success'
+            }
+        }
+        stage ('deploy-stage') {
+            steps {
+                echo 'Deploy Job success'
+            }
+        }
+    }
+}
