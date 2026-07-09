@@ -14,7 +14,8 @@ pipeline {
         }
         stage ('test-stage') {
             steps {
-                sh '''mvn sonar:sonar \\
+                sh ''' cd backend
+                        mvn sonar:sonar \\
                       -Dsonar.projectKey=studentdb \\
                       -Dsonar.projectName=\'studentdb\' \\
                       -Dsonar.host.url=http://65.2.122.106:9000 \\
