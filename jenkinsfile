@@ -14,14 +14,11 @@ pipeline {
         }
         stage ('test-stage') {
             steps {
-                sh ''' cd backend
-                        mvn sonar:sonar \\
-                      -Dsonar.projectKey=studentdb \\
-                      -Dsonar.projectName=\'studentdb\' \\
-                      -Dsonar.host.url=http://65.2.122.106:9000 \\
-                      -Dsonar.token=sqp_792adf80ac7222d52ba37d9dce1f1e1875cf5cc9'''
+                withSonarQubeEnv(installationName: 'sonarqube' , credentialsId: 'cred-sonar') {
+                        mvn sonar:sonar -Dsonar.projectKey=studentdb
             }
         }
+    }
         stage ('deploy-stage') {
             steps {
                 echo 'Deploy Job success'
