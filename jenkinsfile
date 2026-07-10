@@ -22,6 +22,11 @@ pipeline {
             }
         }
     }
+        stage ('Quality-Gate') {
+            steps {
+              waitForQualityGate abortPipeline: true, credentialsId: 'cred-sonar'
+            }
+        }
         stage ('deploy-stage') {
             steps {
                 echo 'Deploy Job success'
