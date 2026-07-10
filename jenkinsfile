@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage ('pull-stage') {
             steps {
+                    
                 git branch: 'main', url: 'https://github.com/shubhamkalsait/EasyCRUD.git'
             }
         }
@@ -24,7 +25,9 @@ pipeline {
     }
         stage ('Quality-Gate') {
             steps {
-              waitForQualityGate abortPipeline: true, credentialsId: 'cred-sonar'
+                    timeout(5) {
+                           waitForQualityGate abortPipeline: true, credentialsId: 'cred-sonar'
+                        }
             }
         }
         stage ('deploy-stage') {
