@@ -30,9 +30,10 @@ pipeline {
                         }
             }
         }
-        stage ('deploy-stage') {
+        stage ('deliver-stage') {
             steps {
-                echo 'Deploy Job success'
+                sh 'aws s3 cp backend/target/student-registration-backend-0.0.1-SNAPSHOT.jar s3://deliver-b38-s3/studentapp.jar'
+
             }
         }
     }
