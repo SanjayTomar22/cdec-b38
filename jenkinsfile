@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Approve') {
             steps {
-                input message: 'Shall we proceed ?' ok: 'Approve'
+                input message: 'Shall we proceed ?' , ok: 'Approve'
             }
         }
         stage('Apply') {
